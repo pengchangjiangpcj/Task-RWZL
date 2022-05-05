@@ -1,0 +1,26 @@
+server:
+  port: 8081
+###### DataSource #####
+spring:
+  datasource:
+    url: jdbc:dm://127.0.0.1:5236/TZZL_RWZL?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8
+    username: TZZL_RWZL
+    password: TZZL_RWZL
+    driver-class-name: dm.jdbc.driver.DmDriver
+    type: com.zaxxer.hikari.HikariDataSource
+
+##### mybatis ######
+mybatis:
+  #在 mapper.xml文件中，对应的实体则不用写全路径
+  type-aliases-package: com.tzzh.taskrwzl.entity
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+### 线程池默认配置 ##
+task:
+  pool:
+    corePoolSize: 3
+    maxPoolSize: 6
+    queueCapacity: 1000
+    keepAliveSeconds: 300
+    threadNamePrefix: myExecutor-service-
